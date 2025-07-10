@@ -24,7 +24,7 @@ jobs:
     runs-on: windows-latest
     needs: Build
     environment: Dev
-	  
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
@@ -33,3 +33,9 @@ jobs:
 
   DeployToProd:
     runs-on: windows-latest
+    needs: DeployToDev
+    environment: Production
+
+    steps:
+      - name: Deploying to production
+        run: echo I just deployed to production
